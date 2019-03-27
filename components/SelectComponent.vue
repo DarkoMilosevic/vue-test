@@ -20,13 +20,12 @@ export default {
     },
     methods: {
         handleChange(e) {
-            this.$emit('selected-option', this.optionSelected)
+            this.$emit('selectedOption', this.optionSelected)
 
             this.$store.commit(e.target.name, this.optionSelected)
         }
     },
     mounted() {
-        console.log('opt', this.options)
         this.selectOptions = this.options[0];
     }
 }

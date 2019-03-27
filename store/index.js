@@ -28,8 +28,7 @@ export const mutations = {
         state.source_of_attention = value
     },
     phone (state, value) {
-        state.phone.ext = value.ext,
-        state.phone.phone = value.phone
+        state.phone = value
     },
     vouchers (state, value) {
         state.vouchers = value
@@ -45,6 +44,9 @@ export const mutations = {
 }
 
 export const actions = {
+    phone({ commit }, data) {
+        commit('phone', data)
+    },
     postData({ state }) {
         console.log(state)
         //nije mi jasno zasto ovdje kad uradim console.log state ne bude u redoslijedu kojim sam ga napisao

@@ -23,8 +23,6 @@ export default {
     },
     methods: {
         handleChange(e) {
-            this.$emit('input', this.gender)
-
             this.$store.commit(e.target.name, this.selectedGender)
         }
     },

@@ -28,8 +28,6 @@ export default {
     },
     methods: {
         handleInput (e) {
-            this.$emit('input', this.content)
-
             let split = this.content.split('\n');
             var lines = [];
             for (var i = 0; i < split.length; i++) {

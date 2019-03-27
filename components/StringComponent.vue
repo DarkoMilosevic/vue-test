@@ -15,7 +15,7 @@ export default {
     },
     methods: {
         handleInput(e) {
-            this.$emit('input', this.content)
+            this.$emit('inputText', this.content)
 
             this.$store.commit(e.target.name, this.content)
         }

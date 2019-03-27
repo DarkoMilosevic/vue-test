@@ -1,6 +1,5 @@
 <template>
     <div class="row">
-        {{$store.state}}
         <component
             v-for="(field,key) in componentsData"
             :key="key"
