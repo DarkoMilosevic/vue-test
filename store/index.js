@@ -12,28 +12,26 @@ export const state = () => ({
 })
 
 export const mutations = {
-    firstNameChange (state, value) {
+    first_name (state, value) {
         state.first_name = value
     },
-    lastNameChange (state, value) {
+    last_name (state, value) {
         state.last_name = value
     },
-    emailSet (state, value) {
+    email (state, value) {
         state.email = value
     },
-    genderSet (state, value) {
+    gender (state, value) {
         state.gender = value
     },
-    sourceSet (state, value) {
+    source_of_attention (state, value) {
         state.source_of_attention = value
     },
-    extSet (state, value) {
-        state.phone.ext = value
+    phone (state, value) {
+        state.phone.ext = value.ext,
+        state.phone.phone = value.phone
     },
-    phoneSet (state, value) {
-        state.phone.phone = value
-    },
-    voucherSet (state, value) {
+    vouchers (state, value) {
         state.vouchers = value
     },
     voucherRemove (state, value) {

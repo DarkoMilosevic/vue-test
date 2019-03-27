@@ -1,39 +1,46 @@
 <template>
-    <div class="form-group col-md-6 text-left">
+    <div :class="'text-left form-group col-md-' + col">
         <div>
-            <label :for="labelName">{{ labelText }}:</label>
+            <label :for="name">{{ label }}:</label>
         </div>
-        <input type="radio" :name="labelName" v-model="gender" :value="genders.male" @change="handleChange">
-        <label :for="genders.male">{{ genders.male }}</label>
-
-        <input type="radio" :name="labelName" v-model="gender" :value="genders.female" @change="handleChange">
-        <label :for="genders.female">{{ genders.female }}</label>
-
-        <input type="radio" :name="labelName" v-model="gender" :value="genders.other" @change="handleChange">
-        <label :for="genders.other">{{ genders.other }}</label>
+        <div class="radio-wrapper">
+            <div v-for="(gender, key) in genders" :key="key">
+                <input type="radio" :name="name" v-model="selectedGender" :value="key" @change="handleChange">
+                <label :for="name">{{ gender }}</label>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-import sample from '../assets/sample'
 export default {
-    props: ['value', 'labelText', 'labelName'],
+    props: ['label', 'name', 'options', 'col'],
     data() {
         return {
-            gender: this.value,
-            genders: ''
+            selectedGender: this.value,
+            genders: []
         }
     },
     methods: {
-        handleChange (e) {
+        handleChange(e) {
             this.$emit('input', this.gender)
+
+            this.$store.commit(e.target.name, this.selectedGender)
         }
     },
     mounted() {
-        this.genders = sample[3].options[0];
+        this.genders = this.options[0];
     }
 }
 </script>
 
 <style>
+.radio-wrapper {
+    display: flex;
+    align-items: center;
+}
+.radio-wrapper label {
+    display: inline-block;
+    margin-right: 1rem;
+}
 </style>

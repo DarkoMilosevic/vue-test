@@ -1,23 +1,25 @@
 <template>
-    <div class="form-group col-md-6 text-left">
-        <label :for="labelName" v-if="labelName">{{ labelText }}:</label>
-        <input type="text" :name="labelName" v-model="content" @input="handleInput" class="form-control">
+    <div :class="'text-left form-group col-md-' + col">
+        <label :for="name" v-if="label">{{ label }}:</label>
+        <input type="text" :name="name" v-model="content" @input="handleInput" class="form-control">
     </div>
 </template>
 
 <script>
 export default {
-    props: ['inputValue', 'labelText', 'labelName'],
+    props: ['value', 'label', 'name', 'col'],
     data() {
         return {
-            content: this.inputValue
+            content: this.value
         }
     },
     methods: {
-        handleInput (e) {
+        handleInput(e) {
             this.$emit('input', this.content)
+
+            this.$store.commit(e.target.name, this.content)
         }
-    }
+    },
 }
 </script>
 

@@ -1,40 +1,34 @@
 <template>
-    <div class="form-group col-md-6 text-left">
-        <label :for="labelName">{{ labelText }}:</label>
+    <div :class="'text-left form-group col-md-' + col">
+        <label :for="name">{{ label }}:</label>
         <div class="row">
-            <select-component :select-opts="selectOptions" :name="labelName" @selected-option="optionSelected"/>
-            <string-component :name="labelName" v-model="phoneNum"/>
+            <select-component :name="name" :options="selectOptions"/>
+            <string-component :name="name" v-model="phoneNum"/>
         </div>
     </div>
 </template>
 
 <script>
-import StringComponent from '../components/StringComponent'
-import SelectComponent from '../components/SelectComponent'
+import stringComponent from '../components/stringComponent'
+import selectComponent from '../components/selectComponent'
 export default {
-    props: ['value', 'selectOptions', 'labelText', 'labelName'],
+    props: ['value', 'options', 'label', 'name', 'col'],
     components: {
-        StringComponent,
-        SelectComponent
-    },
-    computed: {
-        phoneNum: {
-            get () {
-                return this.$store.state.first_name
-            },
-            set (value) {
-                this.$store.commit('phoneSet', value)
-            }
-        },
+        stringComponent,
+        selectComponent
     },
     data() {
         return {
+            selectOptions: []
         }
     },
     methods: {
         optionSelected(e) {
             this.$store.commit('extSet', e)
         }
+    },
+    mounted() {
+        this.selectOptions = this.options[0].ext;
     }
 }
 </script>
