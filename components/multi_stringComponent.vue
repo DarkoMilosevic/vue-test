@@ -17,13 +17,14 @@ export default {
     computed: {
         voucherPill: {
             get () {
-                return this.$store.state.vouchers
+                return this.voucherList
             }
         },
     },
     data() {
         return {
             content: this.inputValue,
+            voucherList: []
         }
     },
     methods: {
@@ -32,9 +33,14 @@ export default {
             var lines = [];
             for (var i = 0; i < split.length; i++) {
                 lines.push(split[i]);
+                this.voucherList = lines
             }
 
-            this.$store.commit(e.target.name, lines)
+            let elementSet = {
+                name: e.target.name,
+                value: lines
+            }
+            this.$store.commit('storeSet', elementSet)
         },
         removePill(index) {
             this.$store.commit('voucherRemove', index)

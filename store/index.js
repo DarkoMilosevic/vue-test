@@ -1,37 +1,9 @@
 export const state = () => ({
-    first_name: '',
-    last_name: '',
-    email: '',
-    gender: '',
-    source_of_attention: '',
-    phone: {
-        ext: '',
-        phone: ''
-    },
-    vouchers: []
 })
 
 export const mutations = {
-    first_name (state, value) {
-        state.first_name = value
-    },
-    last_name (state, value) {
-        state.last_name = value
-    },
-    email (state, value) {
-        state.email = value
-    },
-    gender (state, value) {
-        state.gender = value
-    },
-    source_of_attention (state, value) {
-        state.source_of_attention = value
-    },
-    phone (state, value) {
-        state.phone = value
-    },
-    vouchers (state, value) {
-        state.vouchers = value
+    storeSet (state, value) {
+        state[value.name] = value.value
     },
     voucherRemove (state, value) {
         if (state.vouchers.length > 1) {
@@ -44,11 +16,7 @@ export const mutations = {
 }
 
 export const actions = {
-    phone({ commit }, data) {
-        commit('phone', data)
-    },
     postData({ state }) {
         console.log(state)
-        //nije mi jasno zasto ovdje kad uradim console.log state ne bude u redoslijedu kojim sam ga napisao
     }
 }

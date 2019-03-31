@@ -15,7 +15,11 @@ export default {
     },
     methods: {
         handleInput(e) {
-            this.$store.commit(e.target.name, this.content)
+            let elementSet = {
+                name: e.target.name,
+                value: this.content
+            }
+            this.$store.commit('storeSet', elementSet)
         }
     },
 }

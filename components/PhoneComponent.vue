@@ -30,11 +30,15 @@ export default {
         phoneNum(value) {
             this.phoneNumber = value
         },
-        setPhone() {
-            this.$store.dispatch(this.name, {
-                ext: this.phoneExtension,
-                phone: this.phoneNumber
-            })
+        setPhone(e) {
+            let elementSet = {
+                name: e.target.name,
+                value: {
+                    ext: this.phoneExtension,
+                    phone: this.phoneNumber
+                }
+            }
+            this.$store.commit('storeSet', elementSet)
         }
     },
 }

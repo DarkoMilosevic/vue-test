@@ -23,7 +23,11 @@ export default {
     },
     methods: {
         handleChange(e) {
-            this.$store.commit(e.target.name, this.selectedGender)
+            let elementSet = {
+                name: e.target.name,
+                value: this.selectedGender
+            }
+            this.$store.commit('storeSet', elementSet)
         }
     },
     mounted() {

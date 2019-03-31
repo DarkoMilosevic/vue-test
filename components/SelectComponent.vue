@@ -22,7 +22,11 @@ export default {
         handleChange(e) {
             this.$emit('selectedOption', this.optionSelected)
 
-            this.$store.commit(e.target.name, this.optionSelected)
+            let elementSet = {
+                name: e.target.name,
+                value: this.optionSelected
+            }
+            this.$store.commit('storeSet', elementSet)
         }
     },
     mounted() {
