@@ -1,6 +1,6 @@
 # vue-test
 
-> Alea vue test
+> Playing around with Nuxt.js and Vue.js
 
 ## Build Setup
 
